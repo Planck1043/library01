@@ -19,6 +19,7 @@
                       <b class="caret"></b>
                   </a>
                   <ul>
+                    <li><%= link_to "后台", admin_books_path %></li>
                     <li> <%= link_to("登出", session_path(session),
                             method: :delete, data: { confirm: '确认退出吗?' } ) %> </li>
                   </ul>
