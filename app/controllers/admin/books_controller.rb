@@ -43,9 +43,21 @@ class Admin::BooksController < ApplicationController
     redirect_to admin_books_path
   end
 
+  def book_update
+    @book = Book.find(params[:id])
+    if @book.book_state == "上架"
+      @book.update(book_state: "下架")
+      flash[:error] = "下架成功"
+    else
+      @book.update(book_state: "上架")
+      flash[:error] = "上架成功"
+    end
+    redirect_to admin_books_path
+  end
+
   private
 
   def book_params
-    params.require(:book).permit(:title, :text)
+    params.require(:book).permit(:title, :text, :book_stock, :book_state)
   end
 end
