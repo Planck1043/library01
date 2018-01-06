@@ -1,4 +1,7 @@
 class Admin::BooksController < ApplicationController
+  layout "admin"
+  before_action :admin_required
+
   def index
     @books = Book.all
   end
@@ -16,10 +19,6 @@ class Admin::BooksController < ApplicationController
     else
       render "new"
     end
-  end
-
-  def show
-    @book = Book.find(params[:id])
   end
 
   def edit
