@@ -15,8 +15,8 @@
     <th>操作</th>
   </tr>
   <% @books.each do |book| %>
-    <tr class="text-info">
-      <td><%= book.title %></td>
+    <tr>
+      <td><%= link_to "#{book.title}" , book_path(book) %></td>
       <td><%= book.text %></td>
       <td><%= book.book_stock %></td>
       <td><%= link_to("#{book.book_state}", book_update_admin_books_path(:id => book.id),

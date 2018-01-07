@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-  root 'welcome#index'
+  root 'books#index'
 
   resources :users
   resources :sessions
-  resources :books
   namespace :admin do
     resources :books do
       collection do
@@ -11,5 +10,15 @@ Rails.application.routes.draw do
       end
     end
   end
+  
+  resources :borrows
+  resources :books do
+    member do
+      post :add_to_borrow
+      post :return_book
+    end
+  end
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

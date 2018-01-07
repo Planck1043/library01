@@ -8,6 +8,11 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
+              <li>
+                <%= link_to borrows_path do  %>
+                   借书单 <i class="fa fa-shopping-borrow"> </i> ( <%= current_borrow.books.count %> )
+                <% end %>
+              </li>
               <% if !current_user %>
                 <li><%= link_to("注册", new_user_path) %> </li>
                 <!-- 在 rails 中 "link_to" 是 "<a>" 的封装 -->
